@@ -1,4 +1,3 @@
-
 public class Main {
 
 	public static void main(String[] args) {
@@ -7,6 +6,8 @@ public class Main {
 
 		service.generateTestMap();
 		service.printMap();
+
+		service.convertToJSON();
 	}
 
 }

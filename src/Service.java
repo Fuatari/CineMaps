@@ -1,17 +1,21 @@
 import java.util.HashMap;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 public class Service {
 
 	HashMap<Integer, Movie> movieMap = new HashMap<Integer, Movie>();
 
-	public void generateTestMap() {
-		Movie m1 = new Movie("Mayhem", "Action", "18");
-		Movie m2 = new Movie("A Silent Voice", "Anime", "3");
-		Movie m3 = new Movie("Alien", "Horror", "12");
+	public Movie createMovie(String title, String genre, String ageRating) {
+		Movie movie = new Movie(title, genre, ageRating);
+		return movie;
+	}
 
-		addToMap(1, m1);
-		addToMap(2, m2);
-		addToMap(3, m3);
+	public void generateTestMap() {
+		addToMap(1, createMovie("Mayhem", "Action", "18"));
+		addToMap(2, createMovie("A Silent Voice", "Anime", "3"));
+		addToMap(3, createMovie("Alien", "Horror", "12"));
 	}
 
 	public void addToMap(int id, Movie movie) {
@@ -21,4 +25,16 @@ public class Service {
 	public void printMap() {
 		System.out.println(movieMap.toString());
 	}
+
+	public void convertToJSON() {
+		ObjectMapper mapper = new ObjectMapper();
+		String jsonString = null;
+		try {
+			jsonString = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(movieMap);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+		System.out.println(jsonString);
+	}
+
 }
