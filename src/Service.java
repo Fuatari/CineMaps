@@ -29,4 +29,14 @@ public class Service {
 		convert.javaToJSON(movieMap);
 	}
 
+	public int countGenre(String genre) {
+		int count = 0;
+		for (int i = 1; i <= movieMap.size(); i++) {
+			if (movieMap.get(i).getGenre().equalsIgnoreCase(genre)) {
+				count++;
+			}
+		}
+		return count;
+	}
+
 }

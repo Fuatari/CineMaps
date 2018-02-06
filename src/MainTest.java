@@ -10,8 +10,7 @@ class MainTest {
 	void verifyGenreCount() {
 		service.generateTestMap();
 		int expectedCount = 1;
-		int actualCount = service.countGenre();
-		System.out.println(expectedCount + ", " + actualCount);
+		int actualCount = service.countGenre("Anime");
 		assertEquals(actualCount, expectedCount);
 	}
 
