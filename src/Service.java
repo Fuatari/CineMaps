@@ -1,9 +1,8 @@
 import java.util.HashMap;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 public class Service {
+
+	Converter convert = new Converter();
 
 	HashMap<Integer, Movie> movieMap = new HashMap<Integer, Movie>();
 
@@ -27,14 +26,7 @@ public class Service {
 	}
 
 	public void convertToJSON() {
-		ObjectMapper mapper = new ObjectMapper();
-		String jsonString = null;
-		try {
-			jsonString = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(movieMap);
-		} catch (JsonProcessingException e) {
-			e.printStackTrace();
-		}
-		System.out.println(jsonString);
+		convert.javaToJSON(movieMap);
 	}
 
 }
